@@ -4,9 +4,36 @@
       <title>Angular JS Controller</title>
        <script src="js/angular.min.js"></script>
        <script src="js/components/controller.js"></script>
+       <link rel="stylesheet" href="css/app.css"/>
    </head>
    <body>
+       
+    <!-- Angular samples -->
+       
+    <p>Input something in the input box:</p>
+    <p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
+    <h1>Hello {{name}}</h1>
+
+	<div class="container" ng-init="names=['Jonard','Jayzel','Michelle','Juvs']">
+	
+		<h3>Looping using ng-repeat</h3>
+		<ul>
+			<li ng-repeat="name in names">{{name}}</li>
+		</ul>
+	</div>
+       
+    <!-- Simple Controller samples -->
+	
+	<div class="container" ng-controller="SimpleController">
+		<h3> Adding a Simple Controller</h3>
+		<ul>
+			<li ng-repeat="cust in customers">
+				{{cust.name}} - {{cust.city}}
+			</li>
+		</ul>
+	</div>
       
+       <!-- Controller examples -->
         <div ng-controller="SpicyController">
          <button ng-click="chiliSpicy()">Chili</button>
          <button ng-click="jalapenoSpicy()">Jalapeño</button>
@@ -14,13 +41,30 @@
          <p>The food is {{spice}} spicy!</p>
         </div>
        
-       
+       <!-- Controller examples with input-->
         <div ng-controller="SpicyController2">
          <input ng-model="customSpice">
          <button ng-click="spicy('chili')">Chili</button>
          <button ng-click="spicy(customSpice)">Custom spice</button>
          <p>The food is {{spice}} spicy!</p>
         </div>
+       
+       <!-- Nested Controllers -->
+        <div class="spicy">
+          <div ng-controller="MainController">
+            <p>Good {{timeOfDay}}, {{name}}!</p>
+
+            <div ng-controller="ChildController">
+              <p>Good {{timeOfDay}}, {{name}}!</p>
+
+              <div ng-controller="GrandChildController">
+                <p>Good {{timeOfDay}}, {{name}}!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         
    </body>
 </html>
